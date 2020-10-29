@@ -1,6 +1,5 @@
 # ocserv-docker
 ## install docker
-'''
 apt-get install -y\
     apt-transport-https \
     ca-certificates \
@@ -15,10 +14,8 @@ add-apt-repository \
 
 apt-get update
 apt-get install -y docker-ce 
-'''
 
 ## make & run
-'''
 git clone https://github.com/wppurking/ocserv-docker.git
 cd ocserv-docker
 docker build --no-cache -t ocserv-docker .
