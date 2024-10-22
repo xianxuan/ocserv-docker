@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 MAINTAINER XX <hx6795@gmail.com>
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -30,12 +30,13 @@ RUN mkdir -p /temp && cd /temp \
 
 # configuration lz4
 RUN mkdir -p /temp && cd /temp \
-    && wget https://github.com/lz4/lz4/releases/latest -O lz4.html \
-    && export lz4_version=$(cat lz4.html | grep -m 1 -o 'v[0-9]\.[0-9]\.[0-9]') \
-    && export lz4_suffix=$(cat lz4.html | grep -m 1 -o '[0-9]\.[0-9]\.[0-9]') \
-    && wget https://github.com/lz4/lz4/archive/$lz4_version.tar.gz \
-    && tar xvf $lz4_version.tar.gz \
-    && cd lz4-$lz4_suffix \
+#    && wget https://github.com/lz4/lz4/releases/latest -O lz4.html \
+#    && export lz4_version=$(cat lz4.html | grep -m 1 -o 'v[0-9]\.[0-9]\.[0-9]') \
+#    && export lz4_suffix=$(cat lz4.html | grep -m 1 -o '[0-9]\.[0-9]\.[0-9]') \
+#    && wget https://github.com/lz4/lz4/archive/$lz4_version.tar.gz \
+    && wget https://github.com/lz4/lz4/releases/download/v1.10.0/lz4-1.10.0.tar.gz \
+    && tar xvf lz4-1.10.0.tar.gz \
+    && cd lz4-1.10.0 \
     && make install \
     && ln -sf /usr/local/lib/liblz4.* /usr/lib/ \
     && cd / && rm -rf /temp
